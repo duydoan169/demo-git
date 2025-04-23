@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danh sách kỳ thi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/adminExamManager.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="/image/Logo.png" alt="Phenikaa University">
+      </div>
+      <input type="text" class="search" placeholder="Tìm kiếm" />
+      <nav class="menu">
+        <a href="#">Tài khoản</a>
+        <a href="#">Đối tác</a>
+        <a href="#">Khóa học (E-learning)</a>
+        <a href="#">Lớp học offline</a>
+        <a class="active" href="#">Kỳ thi</a>
+        <a href="#">Chứng chỉ</a>
+        <a href="#">Báo cáo tài chính</a>
+        <a href="#">Cơ sở hạ tầng</a>
+        <a href="#">Tin tức, thông báo</a>
+        <a href="#">Cấu hình</a>
+      </nav>
+      <div class="profile">
+        <img src="/image/Avatar.png" alt="Avatar" />
+        <div>
+          <strong>Trần Hữu Nam</strong>
+          <p>namtran94@phenikaa.com</p>
+        </div>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="page-header">
+        <div>
+          <nav class="breadcrumbs">
+            <span>Kỳ thi</span> › <span class="active">Danh sách kỳ thi</span>
+          </nav>
+          <h1>Danh sách kỳ thi</h1>
+        </div>
+        <div class="header-actions">
+          <button class="btn export"><img src="/image/excel.png" alt="" width="15px" height="15px"> Tải danh sách</button>
+          <select class="btn upload" name="" id="">
+            <option value="" selected hidden disabled>Nhập từ file</option>
+          </select>
+          <button class="btn add" onclick="addExamPopUp()">+ Thêm kỳ thi</button>
+        </div>
+      </header>
+
+      <div class="filter-tags">
+        <span class="tag chosenTag">Tất cả <b>1300</b></span>
+        <span class="tag">Sinh viên <b>1100</b></span>
+        <span class="tag">Nhà trường <b>50</b></span>
+        <span class="tag">Giảng viên <b>50</b></span>
+        <span class="tag">Trợ giảng <b>12</b></span>
+        <span class="tag">Nhân viên dịch vụ <b>25</b></span>
+        <div class="search-bar-container">
+          <input type="text" class="search-bar" placeholder="Tìm kiếm" />
+          <img src="/image/search.png" alt="" width="18px" height="18px">
+        </div>
+      </div>
+
+      <table class="accounts-table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" /></th>
+            <th>Mã tài khoản</th>
+            <th>Họ và tên</th>
+            <th>Email</th>
+            <th>Năm sinh</th>
+            <th>Số điện thoại</th>
+            <th>Quê quán</th>
+            <th>Loại</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>TK002341</td>
+            <td>Nguyễn Văn Nam</td>
+            <td>namnguyen92@gmail.com</td>
+            <td>30/08/2000</td>
+            <td>0369852147</td>
+            <td>Hà Nội</td>
+            <td><span class="badge student">Sinh viên</span></td>
+            <td class="actions"><img src="/image/trash-2.png" alt=""> &nbsp;&nbsp; <img src="/image/edit-2.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>TK002341</td>
+            <td>Nguyễn Kiều Anh</td>
+            <td>kanguyen92@gmail.com</td>
+            <td>30/08/2000</td>
+            <td>0369852147</td>
+            <td>Hà Nội</td>
+            <td><span class="badge admin">Nhà trường</span></td>
+            <td class="actions"><img src="/image/trash-2.png" alt=""> &nbsp;&nbsp; <img src="/image/edit-2.png" alt=""></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" /></td>
+            <td>TK002341</td>
+            <td>Nguyễn Kiều Anh</td>
+            <td>kanguyen92@gmail.com</td>
+            <td>30/08/2000</td>
+            <td>0369852147</td>
+            <td>Hà Nội</td>
+            <td><span class="badge teacher">Giảng viên</span></td>
+            <td class="actions"><img src="/image/trash-2.png" alt=""> &nbsp;&nbsp; <img src="/image/edit-2.png" alt=""></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button>&lt; Trang trước</button>
+        <span>Trang 1 trong 152</span>
+        <button>Trang sau &gt;</button>
+      </div>
+    </main>
+  </div>
+
+
+  <div class="modal-overlay">
+    <div class="modal">
+        <button onclick="closeAddStudentPopUp()" class="modal-close">&times;</button>
+
+        <div class="flex">
+            <div class="section">
+                <h2 class="modal-title">Thêm tài khoản</h2>
+                <p class="section-title">Thông tin chung</p>
+                <p class="section-subtitle">Cập nhật thông tin chung về tài khoản</p>
+            </div>
+
+            <div class="section">
+                <form class="form">
+                    <div class="form-control avatar-upload">
+                        <div class="flex">
+                            <div class="avatar-icon">
+                                <!-- Icon SVG here -->
+                            </div>
+                            <div class="avatar-dropzone">
+                                Click to upload or drag and drop<br />
+                                SVG, PNG, JPG or GIF (max. 400×400px)
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-control">
+                        <label>Họ và tên</label>
+                        <input type="text" placeholder="Nhập tên của bạn">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-control">
+                            <label>Ngày sinh</label>
+                            <input type="text" placeholder="DD/MM/YYYY">
+                        </div>
+                        <div class="form-control">
+                            <label>Số điện thoại</label>
+                            <input type="text" placeholder="Nhập số điện thoại">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-control">
+                            <label>Email</label>
+                            <input type="email" placeholder="Nhập email của bạn">
+                        </div>
+                        <div class="form-control">
+                            <label>Quê quán</label>
+                            <input type="text" placeholder="Nhập quê quán">
+                        </div>
+                    </div>
+
+                    <div class="form-control full-width">
+                        <label>Loại tài khoản</label>
+                        <select>
+                            <option>Sinh viên</option>
+                            <option>Giáo viên</option>
+                            <option>Quản trị</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Thông tin chung -->
+
+        <hr>
+          <!-- Thông tin sinh viên -->
+          <div class="flex">
+              <div class="section">
+                  <p class="section-title">Thông tin sinh viên</p>
+                  <p class="section-subtitle">Cập nhật thông tin liên quan đến loại <br>tài khoản</p>
+              </div>
+              <div class="section">
+                <div class="fromBody">
+
+                </div>
+                  <form class="form">
+                      <div class="form-control full-width">
+                          <label>Trường</label>
+                          <select>
+                              <option>Chọn trường của bạn</option>
+                          </select>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-control">
+                              <label>Mã sinh viên</label>
+                              <input type="text" placeholder="Nhập mã sinh viên">
+                          </div>
+                          <div class="form-control">
+                              <label>Khóa</label>
+                              <input type="text" placeholder="Khóa học của bạn">
+                          </div>
+                      </div>
+                      <div class="form-control full-width">
+                          <label>Chuyên ngành</label>
+                          <select>
+                              <option>Chọn chuyên ngành của bạn</option>
+                          </select>
+                      </div>
+                  </form>
+              </div>
+
+
+          </div>
+          <div class="modal-actions">
+                  <button class="btn btn-secondary">Hủy</button>
+                  <button class="btn btn-primary">Thêm tài khoản</button>
+              </div>
+      </div>
+  </div>
+  <script src="/js/adminExamManager.js"></script>
+</body>
+</html>
